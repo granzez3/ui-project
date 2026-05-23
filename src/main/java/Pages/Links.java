@@ -1,39 +1,20 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class Links {
     WebDriver driver;
 
     @FindBy(id = "created")
     WebElement created;
-
-    @FindBy(id = "no-content")
-    WebElement noContent;
-
-    @FindBy(id = "moved")
-    WebElement moved;
-
-    @FindBy(id = "bad-request")
-    WebElement badRequest;
-
-    @FindBy(id = "unauthorized")
-    WebElement unauthorized;
-
-    @FindBy(id = "forbidden")
-    WebElement forbidden;
-
-    @FindBy(id = "not-found")
-    WebElement notFound;
-
-    @FindBy(xpath = "//b[1]")
-    WebElement status;
-
-    @FindBy(xpath = "//b[2]")
-    WebElement statusText;
 
     public Links(WebDriver driver){
         this.driver = driver;
@@ -42,5 +23,12 @@ public class Links {
 
     public void clickCreated(){
         created.click();
+    }
+
+    public String getStatusText(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement response = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.id("linkResponse")));
+        return response.getText();
     }
 }
