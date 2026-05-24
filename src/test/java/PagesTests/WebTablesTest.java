@@ -1,6 +1,7 @@
 package PagesTests;
 
 import Pages.WebTables;
+import PagesTests.Base.BaseTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

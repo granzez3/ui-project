@@ -1,11 +1,12 @@
 package PagesTests;
 
 import Pages.Buttons;
+import PagesTests.Base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ButtonsTest extends BaseTest{
+public class ButtonsTest extends BaseTest {
     Buttons page;
 
     @BeforeMethod
