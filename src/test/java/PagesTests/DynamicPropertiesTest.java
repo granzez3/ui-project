@@ -2,6 +2,7 @@ package PagesTests;
 
 import Pages.DynamicProperties;
 import PagesTests.Base.BaseTest;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -16,6 +17,8 @@ public class DynamicPropertiesTest extends BaseTest {
 
     @Test
     public void DPTest(){
+        page.enableCLick();
         page.visibleClick();
+        Assert.assertEquals(page.colorGet(), "#dc3545");
     }
 }
