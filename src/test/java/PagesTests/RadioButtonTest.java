@@ -1,7 +1,7 @@
 package PagesTests;
 
-import Pages.RadioButton;
-import PagesTests.Base.BaseTest;
+import Elements.Pages.RadioButton;
+import Base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;

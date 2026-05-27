@@ -1,4 +1,4 @@
-package Pages;
+package Elements.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -42,10 +42,7 @@ public class DynamicProperties {
     }
 
     public String colorGet(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
-        WebElement colorChange = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.id("colorChange")));
+        WebElement colorChange = driver.findElement(By.id("colorChange"));
         return Color.fromString(colorChange.getCssValue("color")).asHex();
     }
-
 }

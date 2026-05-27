@@ -1,7 +1,7 @@
 package PagesTests;
 
-import Pages.UploadAndDownload;
-import PagesTests.Base.BaseDownloadTest;
+import Elements.Pages.UploadAndDownload;
+import Base.BaseDownloadTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;

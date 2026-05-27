@@ -1,7 +1,7 @@
 package PagesTests;
 
-import Pages.DynamicProperties;
-import PagesTests.Base.BaseTest;
+import Elements.Pages.DynamicProperties;
+import Base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

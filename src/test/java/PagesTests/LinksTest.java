@@ -1,7 +1,7 @@
 package PagesTests;
 
-import Pages.Links;
-import PagesTests.Base.BaseTest;
+import Elements.Pages.Links;
+import Base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
