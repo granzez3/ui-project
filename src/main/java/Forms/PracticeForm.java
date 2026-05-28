@@ -68,8 +68,8 @@ public class PracticeForm {
                 .selectByVisibleText("2001");
         new Select(driver.findElement(By.className("react-datepicker__month-select")))
                 .selectByVisibleText("June");
-        driver.findElement(By.xpath("//div[contains(@class,'react-datepicker__month')]"
-                + "//div[not(contains(@class,'outside-month')) and text()='3']")).click();
+        driver.findElement(By.xpath("//div[not(contains(@class, 'outside-month')) " +
+                "and text() = '3']")).click();
         userSubjectsContainer.click();
         userSubjectsContainer.sendKeys(subjectsContainer);
         userSubjectsContainer.sendKeys(Keys.ENTER);
