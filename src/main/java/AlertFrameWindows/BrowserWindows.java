@@ -20,6 +20,9 @@ public class BrowserWindows {
     @FindBy (id = "sampleHeading")
     WebElement sampleText;
 
+    @FindBy (tagName = "body")
+    WebElement pageText;
+
     public BrowserWindows (WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver,this);
@@ -40,4 +43,6 @@ public class BrowserWindows {
     public void newWindowMessageClick(){
         newWindowMessage.click();
     }
+
+
 }

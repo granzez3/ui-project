@@ -24,6 +24,28 @@ public class BrowserWindowsTest extends BaseTest {
     public void BWTest(){
         String mainWindow = driver.getWindowHandle();
         page.newTabClick();
+        page.newWindowClick();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.numberOfWindowsToBe(3));
+
+        Set<String> windows = driver.getWindowHandles();
+        for(String window : windows){
+            if(!(window.equals(mainWindow))){
+                driver.switchTo().window(window);
+                System.out.println(driver.getCurrentUrl());
+                Assert.assertEquals(page.getSampleText(), "This is a sample page");
+                driver.close();
+            }
+        }
+        driver.switchTo().window(mainWindow);
+        System.out.println(driver.getCurrentUrl());
+    }
+
+    @Test
+    public void windowsMessageTest(){
+        String mainWindow = driver.getWindowHandle();
+        page.newWindowMessageClick();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         wait.until(ExpectedConditions.numberOfWindowsToBe(2));
@@ -32,13 +54,9 @@ public class BrowserWindowsTest extends BaseTest {
         for(String window : windows){
             if(!(window.equals(mainWindow))){
                 driver.switchTo().window(window);
-                break;
+                driver.close();
             }
         }
-        System.out.println(driver.getCurrentUrl());
-        Assert.assertEquals(page.getSampleText(), "This is a sample page");
-        driver.close();
         driver.switchTo().window(mainWindow);
-        System.out.println(driver.getCurrentUrl());
     }
 }
