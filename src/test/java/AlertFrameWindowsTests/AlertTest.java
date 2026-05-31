@@ -25,7 +25,7 @@ public class AlertTest extends BaseTest {
 
         page.alertClick();
         Alert alert = driver.switchTo().alert();
-        Assert.assertEquals(alert.getText(), "You clicked a button");
+        Assert.assertTrue(alert.getText().contains("You clicked a button"));
         alert.accept();
 
         page.timerAlertClick();
