@@ -1,6 +1,6 @@
 package PagesTests;
 
-import Elements.Pages.Buttons;
+import Elements.Buttons;
 import Base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;

@@ -1,6 +1,6 @@
 package PagesTests;
 
-import Elements.Pages.UploadAndDownload;
+import Elements.UploadAndDownload;
 import Base.BaseDownloadTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
