@@ -2,8 +2,6 @@ package WidgetsTests;
 
 import Base.BaseTest;
 import Widgets.ProgressBar;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -25,10 +23,7 @@ public class ProgressBarTest extends BaseTest {
 
         page.buttonCLick();
 
-        wait.until(driver1 ->
-                Integer.parseInt(
-                        page.getProgressBarValue()
-                ) >= 25);
+        wait.until(d -> Integer.parseInt(page.getProgressBarValue()) >= 25);
 
         page.buttonCLick();
 
