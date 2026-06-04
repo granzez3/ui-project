@@ -42,7 +42,6 @@ public class DynamicProperties {
     }
 
     public String colorGet(){
-        WebElement colorChange = driver.findElement(By.id("colorChange"));
-        return Color.fromString(colorChange.getCssValue("color")).asHex();
+        return Color.fromString(color.getCssValue("color")).asHex();
     }
 }
