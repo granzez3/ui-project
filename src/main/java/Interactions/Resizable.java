@@ -61,7 +61,7 @@ public class Resizable {
                 .perform();
     }
 
-    public int[] sizeOfResizableBox(){
+     public int[] sizeOfResizableBox(){
         Dimension size = resizableBox.getSize();
         int width = size.getWidth();
         int height = size.getHeight();
