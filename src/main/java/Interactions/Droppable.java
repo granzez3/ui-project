@@ -8,14 +8,17 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 public class Droppable {
     WebDriver driver;
     Actions actions;
+    WebDriverWait wait;
+
+    @FindBy (id = "droppableExample-tab-simple")
+    WebElement simpleTab;
 
     @FindBy (id = "draggable")
     WebElement simpleDrag;
@@ -73,12 +76,18 @@ public class Droppable {
 
     public Droppable(WebDriver driver){
         this.driver = driver;
-        actions = new Actions(driver);
+        this.actions = new Actions(driver);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }
 
+    public void simpleTabClick(){
+        simpleTab.click();
+    }
+
     public void setSimpleDrag(){
-        actions.clickAndHold(simpleDrag)
+        actions.pause(Duration.ofMillis(500))
+                .clickAndHold(simpleDrag)
                 .pause(Duration.ofMillis(300))
                 .moveToElement(simpleDrop)
                 .release()
@@ -95,7 +104,8 @@ public class Droppable {
     }
 
     public void setNotAcceptableDrag(){
-        actions.clickAndHold(notAcceptableDrag)
+        actions.pause(Duration.ofMillis(500))
+                .clickAndHold(notAcceptableDrag)
                 .pause(Duration.ofMillis(300))
                 .moveToElement(acceptDrop)
                 .release()
@@ -103,7 +113,8 @@ public class Droppable {
     }
 
     public void setAcceptableDrag(){
-        actions.clickAndHold(acceptableDrag)
+        actions.pause(Duration.ofMillis(500))
+                .clickAndHold(acceptableDrag)
                 .pause(Duration.ofMillis(300))
                 .moveToElement(acceptDrop)
                 .release()
@@ -120,7 +131,9 @@ public class Droppable {
     }
 
     public void dragToNotGreedyInnerBox(){
-        actions.clickAndHold(dragBox)
+        actions.pause(Duration.ofMillis(500))
+                .moveToElement(dragBox)
+                .clickAndHold(dragBox)
                 .pause(Duration.ofMillis(300))
                 .moveToElement(notGreedyInnerDropBox)
                 .release()
@@ -135,7 +148,8 @@ public class Droppable {
         ((JavascriptExecutor) driver)
                 .executeScript("arguments[0].scrollIntoView({block:'center'})", greedyDropBoxInner);
 
-        actions.clickAndHold(dragBox)
+        actions.pause(Duration.ofMillis(500))
+                .clickAndHold(dragBox)
                 .pause(Duration.ofMillis(300))
                 .moveToElement(greedyDropBoxInner)
                 .release()
@@ -152,33 +166,36 @@ public class Droppable {
     }
 
     public void setRevertableDrag(){
-        actions.clickAndHold(revertableDrag)
+        actions.pause(Duration.ofMillis(500))
+                .clickAndHold(revertableDrag)
                 .pause(Duration.ofMillis(300))
                 .moveToElement(revertableTabDrop)
                 .release()
                 .perform();
     }
 
-    public int revertableDragGetX(){
+    public int[] getRevertableDragPosition(){
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         Point elementPosition = revertableDrag.getLocation();
-        return elementPosition.getX();
-    }
-    public int revertableDragGetY(){
-        Point elementPosition = revertableDrag.getLocation();
-        return elementPosition.getY();
+        int x = elementPosition.getX();
+        int y = elementPosition.getY();
+        return new int[]{x,y};
     }
 
-    public static ExpectedCondition<Boolean> elementAtPosition(WebElement element, int x, int y){
-        return driver -> {
-            Point p = element.getLocation();
-            return p.getX() == x && p.getY() == y;
-        };
+    public int[] getNotRevertableDragPosition(){
+        Point elementPosition = notRevertableDrag.getLocation();
+        int x = elementPosition.getX();
+        int y = elementPosition.getY();
+        return new int[]{x,y};
     }
-    public WebElement revertableDrag(){
-        return revertableDrag;
-    }
+
     public void setNotRevertableDrag(){
-        actions.clickAndHold(notRevertableDrag)
+        actions.pause(Duration.ofMillis(500))
+                .clickAndHold(notRevertableDrag)
                 .pause(Duration.ofMillis(300))
                 .moveToElement(revertableTabDrop)
                 .release()
