@@ -1,4 +1,4 @@
-package PagesTests;
+package ElementsTests;
 
 import Elements.WebTables;
 import Base.BaseTest;

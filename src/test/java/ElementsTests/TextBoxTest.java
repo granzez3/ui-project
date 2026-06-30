@@ -1,4 +1,4 @@
-package PagesTests;
+package ElementsTests;
 
 import Elements.TextBoxPage;
 import io.github.bonigarcia.wdm.WebDriverManager;

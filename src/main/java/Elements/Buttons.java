@@ -31,5 +31,4 @@ public class Buttons {
         dynamicClick.click();
     }
 
-    //@FindBy(xpath = "(//button[text()='Click Me'])[3]")
 }

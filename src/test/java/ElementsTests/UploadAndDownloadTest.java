@@ -1,4 +1,4 @@
-package PagesTests;
+package ElementsTests;
 
 import Elements.UploadAndDownload;
 import Base.BaseDownloadTest;

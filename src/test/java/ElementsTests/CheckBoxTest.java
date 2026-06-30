@@ -1,4 +1,4 @@
-package PagesTests;
+package ElementsTests;
 
 import Elements.CheckBoxPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
